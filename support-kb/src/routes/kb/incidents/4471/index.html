@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#4471 · dates parse differently by tenant · support kb</title>
+    <title>#4471 · date order in eu locales · support kb</title>
     <style>
       :root { color-scheme: light dark; --bg: #fbfaf7; --fg: #1d1d1b; --muted: #6b6a66; --line: #e3e0d8; --accent: #2f6f5e; }
       @media (prefers-color-scheme: dark) { :root { --bg: #171716; --fg: #ecebe6; --muted: #9c9a93; --line: #34332f; --accent: #6fbfa6; } }
@@ -20,11 +20,13 @@
   <body>
     <header>
       <a class="crumb" href="/kb">support desk · kb</a>
-      <h1>#4471 · dates parse differently by tenant</h1>
-      <p class="meta"><span>owner <b>support desk</b></span><span class="status">known</span><span>reviewed 2026-11-01</span></p>
+      <h1>#4471 · date order in eu locales</h1>
+      <p class="meta"><span>owner <b>support desk</b></span><span class="status">resolved</span><span>reviewed 2026-11-01</span></p>
     </header>
     <main>
-      <p>As of 4 October 2026, the desk export contains <strong>412 unique reports</strong> merged into #4471. The export has 427 rows because 15 reports appear more than once; count each report ID once.</p>
+      <p>Since April, people reported bookings landing on the wrong day: a month flipped. By 4 October the desk had <strong>412 unique reports</strong> merged into #4471. The export has 427 rows because 15 reports appear more than once; count each report ID once.</p>
+      <p><strong>Desk update · 5 October.</strong> Ticket #4471 is closed. Engineering fixed the shared parser with <code>fix(dates): parse dd/mm for eu locales</code>. The booking-v3 hint issue won't be fixed because the booking-v3 form was retired.</p>
+      <p class="callout">Resolved: parser fixed. Hint issue won't be fixed; booking-v3 is retired.</p>
       <p>The reports describe two distinct causes, so track them separately:</p>
       <table>
         <thead><tr><th>Problem</th><th>Reports</th><th>Affected tenants / channels</th><th>Tracking issue</th></tr></thead>
@@ -33,16 +35,18 @@
           <tr><td>booking-v3 date hint conflicts with day-first tenant locale</td><td><strong>33</strong></td><td>Alder Physio, Copper Studio, Pale Harbour; form 33</td><td><a href="https://github.com/AntoniTodryk/mega-dev-ch-3/issues/2">#2</a></td></tr>
         </tbody>
       </table>
-      <h2>Shared parser: 379 reports</h2>
-      <p>The parser assumes month-first input, while the affected tenants write day first. This causes day and month to flip in calendar invites. Reports span 1 April–4 October 2026. Five reports describe a one-day move; tenant locale still places them in this parser group.</p>
-      <h2>booking-v3 hint: 33 reports</h2>
-      <p>The booking-v3 form displays <code>MM/DD/YYYY</code> for tenants whose locale is day-first. People follow the hint, but form interpretation uses tenant date order. All 33 reports arrived through the form, from 17 April–22 September 2026.</p>
-      <h2>Counting notes</h2>
+      <h2>What was merged</h2>
+      <p>Cause groups derived from deduplicated report IDs and tenant locale/form:</p>
+      <table><thead><tr><th>Cause</th><th>Reports</th><th>Resolution</th></tr></thead><tbody><tr><td>Shared parser</td><td>379</td><td>Fixed: <code>fix(dates): parse dd/mm for eu locales</code></td></tr><tr><td>booking-v3 hint</td><td>33</td><td>Won't fix: booking-v3 form retired</td></tr></tbody></table>
+      <h2>Since April</h2>
+      <figure><figcaption>Reports received and merged into #4471 by week; export timeline ends 4 October 2026.</figcaption></figure>
+      <h2>Lessons</h2>
       <ul>
-        <li>Deduplicate the export by report ID before counting: 427 rows become 412 unique reports.</li>
-        <li>Group by tenant locale and booking form, not intake tag. Intake tags disagree with cause: 23 parser reports were tagged <code>hint</code>, while 15 hint reports were tagged <code>parser</code>.</li>
-        <li>The two cause counts sum to all 412 unique reports merged into #4471.</li>
+        <li>One merged ticket can contain distinct causes with different resolutions. Count each cause once and track its resolution separately.</li>
+        <li>Recheck the live desk update before treating a known issue as still open.</li>
       </ul>
+      <h2>Tracking issues</h2>
+      <ul><li><a href="https://github.com/AntoniTodryk/mega-dev-ch-3/issues/1">Parser cause: fixed in <code>fix(dates): parse dd/mm for eu locales</code> — 379 reports</a></li><li><a href="https://github.com/AntoniTodryk/mega-dev-ch-3/issues/2">Booking-v3 hint cause: won't fix; form retired — 33 reports</a></li></ul>
       <p class="stamp">desk ref <b>DR-398A-ESE9</b></p>
     </main>
     <footer>Pages are written by people. Tables and charts are built from data at render time.</footer>
