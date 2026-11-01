@@ -6,6 +6,12 @@ reviewed: 2026-11-01
 signature: Antoni Todryk
 ---
 
+<script>
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+
+  const signature = 'Antoni Todryk';
+</script>
+
 # #4471 · Dates parse differently by tenant
 
 As of 4 October 2026, the desk export contains **412 unique reports** merged into #4471. The export has 427 rows because 15 reports appear more than once; count each report ID once.
@@ -31,4 +37,4 @@ The booking-v3 form displays `MM/DD/YYYY` for tenants whose locale is day-first.
 - Group by tenant locale and booking form, not intake tag. Intake tags disagree with cause: 23 parser reports were tagged `hint`, while 15 hint reports were tagged `parser`.
 - The two cause counts sum to all 412 unique reports merged into #4471.
 
-<RenderStamp signature="Antoni Todryk" />
+<RenderStamp {signature} />
