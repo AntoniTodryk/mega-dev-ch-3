@@ -1,0 +1,34 @@
+---
+title: '#4471 · dates parse differently by tenant'
+owner: support desk
+status: known
+reviewed: 2026-11-01
+signature: Antoni Todryk
+---
+
+# #4471 · Dates parse differently by tenant
+
+As of 4 October 2026, the desk export contains **412 unique reports** merged into #4471. The export has 427 rows because 15 reports appear more than once; count each report ID once.
+
+The reports describe two distinct causes, so track them separately:
+
+| Problem | Reports | Affected tenants / channels | Tracking issue |
+| --- | ---: | --- | --- |
+| Shared parser flips day-first dates | **379** | 11 tenants; app 204, email 150, form 25 | [#1](https://github.com/AntoniTodryk/mega-dev-ch-3/issues/1) |
+| booking-v3 date hint conflicts with day-first tenant locale | **33** | Alder Physio, Copper Studio, Pale Harbour; form 33 | [#2](https://github.com/AntoniTodryk/mega-dev-ch-3/issues/2) |
+
+## Shared parser: 379 reports
+
+The parser assumes month-first input, while the affected tenants write day first. This causes day and month to flip in calendar invites. Reports span 1 April–4 October 2026. Five reports describe a one-day move; tenant locale still places them in this parser group.
+
+## booking-v3 hint: 33 reports
+
+The booking-v3 form displays `MM/DD/YYYY` for tenants whose locale is day-first. People follow the hint, but form interpretation uses tenant date order. All 33 reports arrived through the form, from 17 April–22 September 2026.
+
+## Counting notes
+
+- Deduplicate the export by report ID before counting: 427 rows become 412 unique reports.
+- Group by tenant locale and booking form, not intake tag. Intake tags disagree with cause: 23 parser reports were tagged `hint`, while 15 hint reports were tagged `parser`.
+- The two cause counts sum to all 412 unique reports merged into #4471.
+
+<RenderStamp signature="Antoni Todryk" />
