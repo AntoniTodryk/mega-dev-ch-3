@@ -1,0 +1,49 @@
+---
+layout: runbook
+title: '#4471 · date order in eu locales'
+owner: support desk
+status: resolved
+reviewed: 2026-11-01
+signature: Antoni Todryk
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+
+  const signature = 'Antoni Todryk';
+</script>
+
+Since April, people have told us their bookings land on the wrong day: a month flipped. By
+4 October the desk had **412 reports**.
+
+**Desk update · 5 October.** Ticket #4471 is closed. Engineering fixed the shared parser with
+`fix(dates): parse dd/mm for eu locales`. The booking-v3 hint issue won't be fixed because the
+booking-v3 form was retired.
+
+<Callout>
+Resolved: parser fixed. Hint issue won't be fixed; booking-v3 is retired.
+</Callout>
+
+## What was merged
+
+<CauseTable ticket={4471} />
+
+## Since April
+
+<QueueTimeline ticket={4471} />
+
+## Lessons
+
+- One merged ticket can contain distinct causes with different resolutions. Count each cause
+  once and track its resolution separately.
+- Recheck the live desk update before treating a known issue as still open.
+
+## Tracking issues
+
+- [Parser cause: fixed in `fix(dates): parse dd/mm for eu locales`](https://github.com/AntoniTodryk/mega-dev-ch-3/issues/1) — 379 reports.
+- [Booking-v3 hint cause: won't fix; form retired](https://github.com/AntoniTodryk/mega-dev-ch-3/issues/2) — 33 reports.
+
+<RenderStamp {signature} />
