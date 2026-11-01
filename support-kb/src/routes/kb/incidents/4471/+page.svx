@@ -1,4 +1,5 @@
 ---
+layout: runbook
 title: '#4471 · dates parse differently by tenant'
 owner: support desk
 status: known
@@ -11,8 +12,6 @@ signature: Antoni Todryk
 
   const signature = 'Antoni Todryk';
 </script>
-
-# #4471 · Dates parse differently by tenant
 
 As of 4 October 2026, the desk export contains **412 unique reports** merged into #4471. The export has 427 rows because 15 reports appear more than once; count each report ID once.
 
