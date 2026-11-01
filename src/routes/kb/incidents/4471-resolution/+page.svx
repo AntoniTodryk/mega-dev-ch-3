@@ -4,13 +4,13 @@ title: '#4471 · date order in eu locales — resolution'
 owner: support desk
 status: resolved
 reviewed: 2026-11-01
-signature: Antoni Todryk
+signature: v1.eyJzdWIiOiI1Njg1IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTM1NzE3MTIsImV4cCI6MTc5MzY1ODExMn0.ZMXl-iH1DmNmJ9m3h5EAuj8m2VqMFmdXqr1C-0keF9Y
 ---
 
 <script>
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
 
-  const signature = 'Antoni Todryk';
+  const signature = 'v1.eyJzdWIiOiI1Njg1IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTM1NzE3MTIsImV4cCI6MTc5MzY1ODExMn0.ZMXl-iH1DmNmJ9m3h5EAuj8m2VqMFmdXqr1C-0keF9Y';
 </script>
 
 #4471 merged **412 unique reports** about dates. The export contains 427 rows, including 15 duplicate report IDs.
